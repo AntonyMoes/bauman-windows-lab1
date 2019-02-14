@@ -6,6 +6,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/Modules/")
 find_package(SFML 2 COMPONENTS graphics audio network window system REQUIRED)
 find_package(OpenGL REQUIRED)
+find_package(X11 REQUIRED)
 
 include_directories(${SFML_INCLUDE_DIR})
 include_directories(lib/imgui)
@@ -30,4 +31,4 @@ set(
 add_library(imgui ${IMGUI})
 
 add_executable(window main.cpp)
-target_link_libraries(window ${SFML_LIBRARIES} imgui ${OPENGL_LIBRARIES})
+target_link_libraries(window ${SFML_LIBRARIES} imgui ${OPENGL_LIBRARIES} X11 pthread)
